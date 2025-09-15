@@ -1,0 +1,37 @@
+import mongoose, {Schema} from "mongoose";
+import { IUser, IUserRole } from "../types/user.types";
+
+const userSchema = new Schema<IUser>({
+    firstName: {
+        type: String,
+        required: true,
+    },
+    secondName: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    role: {
+        type: String,
+        enum: Object.values(IUserRole),
+        required: true,
+        default: IUserRole.USER,
+    },
+    avater: {
+        type: String,
+    },
+    isValidate: {
+        type: Boolean,
+        default: false,
+    }
+})
+
+const UserModel = mongoose.model<IUser>("User", userSchema);
+export default UserModel;
