@@ -1,9 +1,11 @@
 import express, {Request, Response, Application} from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 import connectDB from './config/connectDB';
 import apiRoutes from './routes/api.routes';
+import { configureCloudinary } from './config/cloudinary';
 
 
 const app: Application = express();
@@ -11,12 +13,13 @@ const app: Application = express();
 const PORT : Number = 8000;
 
 dotenv.config()
-
+configureCloudinary();
 connectDB()
 
 const allowedOrigin = process.env.CLIENT_ORIGIN;
 
 app.use(express.json())
+app.use(cookieParser())
 
 app.use(cors({
     origin: allowedOrigin,

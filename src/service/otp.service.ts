@@ -6,8 +6,8 @@ export const createOtp = async (otp: IOtp) => {
 }
 
 export const findOtp = async (email: string, otp: string) => {
-    return await OtpModel.find({email, otp})
-}
+    return await OtpModel.findOne({email, otp})
+}      
 
 export const deleteOtp = async (email: string) => {
     return await OtpModel.deleteOne({email})

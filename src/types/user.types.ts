@@ -4,11 +4,14 @@ export enum IUserRole {
 }
 
 export interface IUser{
-    firstName: string;
-    secondName: string;
+    _id?: string;
+    firstName?: string;
+    secondName?: string;
     email: string;
-    password: string;
+    password?: string;
     role: IUserRole;
-    avater: string;
+    bio?: string;
+    avatar?: string;
     isValidate: boolean;
+    isRegComplet?: boolean;
 }

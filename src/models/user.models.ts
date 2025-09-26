@@ -4,11 +4,11 @@ import { IUser, IUserRole } from "../types/user.types";
 const userSchema = new Schema<IUser>({
     firstName: {
         type: String,
-        required: true,
+        // required: true,
     },
     secondName: {
         type: String,
-        required: true
+        // required: true
     },
     email: {
         type: String,
@@ -16,7 +16,7 @@ const userSchema = new Schema<IUser>({
     },
     password: {
         type: String,
-        required: true
+        // required: true
     },
     role: {
         type: String,
@@ -24,14 +24,21 @@ const userSchema = new Schema<IUser>({
         required: true,
         default: IUserRole.USER,
     },
-    avater: {
+    bio: {
+        type: String
+    },
+    avatar: {
         type: String,
     },
     isValidate: {
         type: Boolean,
         default: false,
-    }
-})
+    },
+    isRegComplet: {
+        type: Boolean,
+        default: false,
+    },
+}, {timestamps: true})
 
 const UserModel = mongoose.model<IUser>("User", userSchema);
 export default UserModel;
